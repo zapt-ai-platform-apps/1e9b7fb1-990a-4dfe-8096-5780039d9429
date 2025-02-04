@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import HeroSection from './components/HeroSection';
-import TasksSection from './components/TasksSection';
+import HeroSection from './screens/Home/HeroSection';
+import TasksSection from './screens/Home/TasksSection';
 
 export default function App() {
   const [loading, setLoading] = useState(false);
