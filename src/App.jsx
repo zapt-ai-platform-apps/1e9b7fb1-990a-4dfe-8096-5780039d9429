@@ -1,28 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import HeroSection from './screens/Home/HeroSection';
 import TasksSection from './screens/Home/TasksSection';
+import InvestigationFlow from './screens/Flow/InvestigationFlow';
 
 export default function App() {
-  const [loading, setLoading] = useState(false);
+  const [investigationStarted, setInvestigationStarted] = useState(false);
 
   useEffect(() => {
     console.log('App loaded: المحقق السيبراني الخاص');
   }, []);
 
   const handleStart = () => {
-    console.log('Start process initiated.');
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      console.log('Process completed.');
-    }, 2000);
+    console.log('Starting investigation flow.');
+    setInvestigationStarted(true);
   };
 
   return (
     <div className="min-h-screen flex flex-col text-gray-900">
-      <main className="flex-grow">
-        <HeroSection loading={loading} handleStart={handleStart} />
-        <TasksSection />
+      <main className="flex-grow h-full">
+        {!investigationStarted ? (
+          <>
+            <HeroSection handleStart={handleStart} />
+            <TasksSection />
+          </>
+        ) : (
+          <InvestigationFlow />
+        )}
       </main>
       <footer className="py-4">
         <div className="text-center">
